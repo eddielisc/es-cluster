@@ -8,7 +8,7 @@ services:
       - ./es5:/usr/share/elasticsearch/data
     environment:
       - node.name=es5
-      - node.master=true
+      - node.master=false
       - node.data=true
       - node.ingest=true
       - node.remote_cluster_client=false
