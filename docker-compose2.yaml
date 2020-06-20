@@ -1,0 +1,29 @@
+version: "3"
+services:
+  es5:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1
+    ports:
+      - "9205:9200"
+    volumes:
+      - ./es5:/usr/share/elasticsearch/data
+    environment:
+      - node.name=es5
+      - node.master=true
+      - node.data=true
+      - node.ingest=true
+      - node.remote_cluster_client=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+      - discovery.seed_hosts=es1
+      - cluster.initial_master_nodes=es1
+      - xpack.monitoring.collection.enabled=true
+    ulimits:
+      nproc: 65535
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

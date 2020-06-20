@@ -1,0 +1,102 @@
+
+###PUT
+PUT http://localhost:9201/space.book HTTP/1.1
+Content-Type: application/json
+
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 5,
+            "number_of_replicas" : 1
+        }
+    }
+}
+### create record
+POST http://localhost:9201/space.book/_doc HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Star War 1",
+  "title": "Star War Episode One",
+  "year" : 1881,
+  "price": 1
+}
+
+### update mapping
+PUT http://localhost:9201/space.book/_mapping HTTP/1.1
+Content-Type: application/json
+
+{
+  "properties": {
+    "year": {
+      "type": "integer"
+    }
+  }
+}
+
+###PUT
+PUT http://localhost:9201/space.book/_settings HTTP/1.1
+Content-Type: application/json
+
+{
+    "settings" : {
+        "index" : {
+            "number_of_replicas" : 2
+        }
+    }
+}
+
+###
+PUT http://localhost:9201/space.movie
+Content-Type: application/json
+
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 5,
+            "number_of_replicas" : 2
+        }
+    },
+    "mappings": {
+       "properties": {
+          "name": {
+            "type": "keyword"
+          },
+          "title": {
+            "type": "text"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer",
+            "index": false
+          }
+      }
+    }
+}
+
+### update mapping
+PUT http://localhost:9201/space.movie/_mapping HTTP/1.1
+Content-Type: application/json
+
+{
+  "properties": {
+    "year": {
+      "type": "",
+      "index": false
+    }
+  }
+}
+
+###
+POST http://localhost:9201/space.movie/_doc
+Content-Type: application/json
+
+{
+  "name": "Star War 2",
+  "title": "Star War Episode Two",
+  "year" : 1880,
+  "price": 10,
+}
+
