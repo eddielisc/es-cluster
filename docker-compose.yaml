@@ -38,7 +38,6 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
       - discovery.seed_hosts=es1
-      - cluster.initial_master_nodes=es1
       - xpack.monitoring.collection.enabled=true
     ulimits:
       nproc: 65535
@@ -62,7 +61,6 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
       - discovery.seed_hosts=es1
-      - cluster.initial_master_nodes=es1
       - xpack.monitoring.collection.enabled=true
     ulimits:
       nproc: 65535
@@ -86,7 +84,6 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
       - discovery.seed_hosts=es1
-      - cluster.initial_master_nodes=es1
       - xpack.monitoring.collection.enabled=true
     ulimits:
       nproc: 65535
